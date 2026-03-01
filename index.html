@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Saviour • AI Coding Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Markdown libraries for rendering AI responses -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.6/dist/purify.min.js"></script>
+
+<div id="mainContainer" class="container">
+
+    <!-- Left sidebar (empty placeholder for future items) -->
+    <aside id="leftSidebar" class="left-sidebar" aria-hidden="true">
+        <!-- Placeholder: empty sidebar for future navigation or components -->
+        <div class="prompt-library">
+            <h2 class="prompt-library-title">💡 Prompt Library</h2>
+            <div class="prompt-buttons">
+                <button class="prompt-item" data-prompt="Please debug the following code and explain what is wrong:">
+                    Debug My Code
+                </button>
+                <button class="prompt-item" data-prompt="Explain the error in this code and why it occurs:">
+                    Explain Error
+                </button>
+                <button class="prompt-item" data-prompt="Optimize this code for better performance and explain the improvements:">
+                    Optimize Performance
+                </button>
+            </div>
+        </div>
+
+        <!-- AI Hint Generator: placed immediately below Prompt Library -->
+        <div class="hint-generator">
+            <h2 class="hint-generator-title">🧠 AI Hint Generator</h2>
+            <div class="hint-buttons">
+                <button class="hint-item" data-prompt="Give me helpful hints to improve this code. Point out what could be better, ask guiding questions, but do NOT provide the corrected code or full solution. Help me learn by guiding my thinking.">
+                    Generate Code Hints
+                </button>
+            </div>
+        </div>
+
+        <!-- Code Analyzer: placed at the very bottom of the sidebar -->
+        <div class="analyzer-section">
+            <h2 class="analyzer-title">📊 Code Analyzer</h2>
+            <div class="analyzer-buttons">
+                <button class="prompt-item analyzer-item" data-prompt="Analyze this code and respond in ONE LINE ONLY with a rating out of 10 and a brief reason. Do not use multiple sentences.">
+                    Analyze Code
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Right pane contains the chat and controls -->
+    <div id="rightPane" class="right-pane">
+
+    <!-- central landing search area (transitions away when chat starts) -->
+    <section id="searchArea" class="search-area">
+        <div class="input-box">
+            <label for="imageInput" id="uploadBtn" class="upload-btn" title="Upload image">📷</label>
+            <input type="file" id="imageInput" accept="image/*" hidden>
+
+            <input type="text" id="searchInput" placeholder="Ask me anything..." autocomplete="off">
+
+            <button id="sendBtn" class="send-btn" title="Send">➤</button>
+        </div>
+        <div id="previewContainer" class="preview-container">
+            <img id="imagePreview" alt="preview">
+            <button id="removePreview" class="remove-preview">✖️</button>
+        </div>
+    </section>
+
+    <!-- chat wrapper holds messages and header -->
+    <section id="chatWrapper" class="chat-wrapper chat-container">
+        <header class="chat-header">
+            <h1>Syntax Saviour</h1>
+            <button id="settingsIcon" class="settings-icon" aria-label="Settings">⚙️</button>
+        </header>
+        <div id="messagesContainer" class="messages-containe'''r">
+            <div class="message assistant"></div>
+        </div>
+        <div id="typingIndicator" class="typing-indicator" hidden>Thinking...</div>
+    </section>
+
+    <!-- bottom input area (visible once chat started) -->
+    <section id="inputArea" class="input-area">
+        <div class="input-box">
+            <label for="imageInputBottom" id="uploadBtnBottom" class="upload-btn" title="Upload image">📷</label>
+            <input type="file" id="imageInputBottom" accept="image/*" hidden>
+
+            <input type="text" id="searchInputBottom" placeholder="Type a message..." autocomplete="off">
+
+            <button id="sendBtnBottom" class="send-btn" title="Send">➤</button>
+        </div>
+        <div id="previewContainerBottom" class="preview-container">
+            <img id="imagePreviewBottom" alt="preview">
+            <button id="removePreviewBottom" class="remove-preview">✖️</button>
+        </div>
+    </section>
+
+    <!-- settings panel -->
+    <aside id="settingsPanel" class="settings-panel">
+        <button id="closeSettings" class="close-settings" aria-label="Close">✖️</button>
+        <div class="settings-content">
+            <button id="resetChat" class="settings-item">🔄 Reset Chat</button>
+            <div class="settings-item theme-setting">
+                <label>
+                    <input type="checkbox" id="themeToggle">
+                    Dark Mode
+                </label>
+            </div>
+            <div class="settings-item font-setting">
+                <label for="fontSizeSelect">Font size:</label>
+                <select id="fontSizeSelect">
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+            <div class="settings-item anim-setting">
+                <label for="animToggle">Response Speed Mode:</label>
+                <select id="animToggle">
+                    <option value="instant">Instant</option>
+                    <option value="typing">Typing Effect</option>
+                </select>
+            </div>
+        </div>
+    </aside>
+
+    </div> <!-- end rightPane -->
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
